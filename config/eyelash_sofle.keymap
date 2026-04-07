@@ -36,6 +36,14 @@
 
         tap-ms = <100>;
     };
+   
+    scroll_encoder_vec: scroll_encoder_vec {
+        compatible = "zmk,behavior-sensor-rotate";
+        #sensor-binding-cells = <0>;
+        bindings = <&msc SCRL_LEFT>, <&msc SCRL_RIGHT>;
+
+        tap-ms = <100>;
+    };
 
     behaviors {
         lt: layer_tap {
@@ -86,8 +94,8 @@
 &kp C_MUTE  &kp LCTRL  &kp LEFT_GUI  &kp LEFT_ALT  &mo 1   &kp SPACE    &kp ENTER        &kp SPACE  &kp ENTER  &mo 2      &kp RIGHT_SHIFT  &kp DELETE
             >;
 
-            sensor-bindings = <&inc_dec_kp C_VOLUME_UP C_VOL_DN>;
             display-name = "Core";
+            sensor-bindings =  <&scroll_encoder>;
         };
 
         layer_1 {
@@ -100,7 +108,7 @@
             >;
 
             display-name = "Addon";
-            sensor-bindings = <&scroll_encoder>;
+            sensor-bindings = <&scroll_encoder_vec>;
         };
 
         layer_2 {
